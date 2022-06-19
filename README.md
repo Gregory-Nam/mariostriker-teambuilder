@@ -2,4 +2,5 @@
 Web app to share team and meta on mariostriker
 
 * LEARNING
-  * test
+  * form handling ajax with symfony
+  * stimulus controller
