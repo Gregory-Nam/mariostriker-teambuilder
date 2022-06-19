@@ -1,0 +1,38 @@
+.mario-title {
+    color:#F4C203;
+}
+
+.mario-title:link, .mario-title:hover{
+    text-decoration: none;
+    pointer-events: none;
+}
+
+#signUpModal .modal-content > * {
+    background-color: #EFEFD3;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.content{
+    width:100%;
+    height:100%;
+    background:linear-gradient(244.61deg, #BE2A06 0.33%, #C64A0D 10.75%, #CA580E 22.7%, #CF6910 27.13%, #D67E12 37.5%, #D89219 49.13%, #D67E12 74.51%, #C64A0D 84.91%, #BE2A06 100.09%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#signUpModal input[type], #signUpModal input[type]:hover, #signUpModal input[type]::placeholder, 
+#signUpModal input[type]:focus {
+    background: #1F0207;
+    color: yellow;
+}
+
+#signUpModal input[type]::placeholder {
+    color:rgba(255, 255, 0, 0.356);
+}
