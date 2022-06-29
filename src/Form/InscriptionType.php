@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,6 +24,16 @@ class InscriptionType extends AbstractType
                 ],
                 'attr'=> [
                     'placeholder' => 'Inserez votre pseudo',
+                    'class' => "text-center"
+                ]
+            ])
+            ->add('Mail', EmailType::class, [
+                'label' => "Adresse mail",
+                'label_attr' => [
+                    'class' => "w-100 text-center"
+                ],
+                'attr'=> [
+                    'placeholder' => 'Inserez votre mail',
                     'class' => "text-center"
                 ]
             ])

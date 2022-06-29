@@ -58,6 +58,11 @@ class User
      */
     private $Code_club;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Mail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +160,18 @@ class User
     public function setCodeClub(?string $Code_club): self
     {
         $this->Code_club = $Code_club;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->Mail;
+    }
+
+    public function setMail(string $Mail): self
+    {
+        $this->Mail = $Mail;
 
         return $this;
     }

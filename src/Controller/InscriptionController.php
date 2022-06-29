@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormError;
 
 class InscriptionController extends AbstractController
 {
@@ -32,8 +33,12 @@ class InscriptionController extends AbstractController
          * ajax call from sign up form
          */
         if($request->isMethod("POST")){
-            dd($form->getData());
-            return new JsonResponse(array("status"=>"error", "message"=>"stop"), 400);
+            if(!$form->isValid()) {
+                $errorMessage = $form->getErrors(true)->current()->getMessageTemplate();
+                return new JsonResponse(array("status"=>"error", "message"=>$errorMessage), 400);
+            }
+            return new JsonResponse(array("status"=>"paserrorr", "message"=>"OK"), 400);
+
         }
 
 

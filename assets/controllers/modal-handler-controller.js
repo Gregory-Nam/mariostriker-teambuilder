@@ -1,14 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 
-/*
- * This is an example Stimulus controller!
- *
- * Any element with a data-controller="hello" attribute will cause
- * this controller to be executed. The name "hello" comes from the filename:
- * hello_controller.js -> "hello"
- *
- * Delete this file or adapt it for your use!
- */
+
 export default class extends Controller {
     static targets = ["modal", "modalBody", "form"];
 
@@ -50,6 +42,18 @@ export default class extends Controller {
     validation(event){
         event.preventDefault();
         const data = new FormData(this.formTarget);
-        this.ajaxPut(this.formUrlValue, data).then(res=>console.log(res)).catch(error=>console.log(error));
+        this.ajaxPut(this.formUrlValue, data)
+            .then(res=> res.json())
+            .then(data=>{
+                if(data.status == "error") {
+                    const errorSignUp = document.querySelector(".error-signup-alert");
+                    if(errorSignUp != null) errorSignUp.remove();
+                    const errorElem = document.createElement("div");
+                    errorElem.classList.add("alert","alert-danger", "error-signup-alert");
+                    errorElem.innerHTML = data.message;
+                    this.modalBodyTarget.prepend(errorElem);
+                    
+                }
+            })
     }
 }
