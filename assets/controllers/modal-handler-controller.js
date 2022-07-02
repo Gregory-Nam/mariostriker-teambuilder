@@ -2,10 +2,11 @@ import { Controller } from '@hotwired/stimulus';
 
 
 export default class extends Controller {
-    static targets = ["modal", "modalBody", "form"];
+    static targets = ["modal", "modalBody", "form", "formLogin"];
 
     static values = {
-        'formUrl': String,
+        'signupUrl': String,
+        'loginUrl': String,
     }
 
     /**
@@ -30,7 +31,13 @@ export default class extends Controller {
      * Click on signup
      */
     async signUpForm() {
-        this.ajaxGet(this.formUrlValue).then(form=>{
+        this.ajaxGet(this.signupUrlValue).then(form=>{
+            this.modalBodyTarget.innerHTML = form;
+        });
+    }
+
+    async loginForm(){
+        this.ajaxGet(this.loginUrlValue).then(form=>{
             this.modalBodyTarget.innerHTML = form;
         });
     }
@@ -42,18 +49,36 @@ export default class extends Controller {
     validation(event){
         event.preventDefault();
         const data = new FormData(this.formTarget);
-        this.ajaxPut(this.formUrlValue, data)
+        this.ajaxPut(this.signupUrl, data)
             .then(res=> res.json())
             .then(data=>{
                 if(data.status == "error") {
-                    const errorSignUp = document.querySelector(".error-signup-alert");
-                    if(errorSignUp != null) errorSignUp.remove();
-                    const errorElem = document.createElement("div");
-                    errorElem.classList.add("alert","alert-danger", "error-signup-alert");
-                    errorElem.innerHTML = data.message;
-                    this.modalBodyTarget.prepend(errorElem);
-                    
+                    this.modalBodyTarget.prepend(this.createAlertMessage(data.message, "signup-alert","alert","alert-danger"));
+                }
+                else {
+                    this.modalBodyTarget.prepend(this.createAlertMessage("Inscription validé", "signup-alert","alert","alert-success"));
                 }
             })
+    }
+
+    validationLogin(event){
+        event.preventDefault();
+        const data = new FormData(this.formLoginTarget);
+        this.ajaxPut(this.loginUrlValue, data)
+            .then(res => {if(res.status == 401) return res.json(); else if(res.status == 200) window.location.reload()})
+            .then(data=>{
+                this.modalBodyTarget.prepend(this.createAlertMessage(data.message, "signup-alert","alert","alert-danger"));
+            });
+    }
+
+    createAlertMessage(message, id,...classList){
+        const elemExisting = document.getElementById(id);
+        if(elemExisting) elemExisting.remove();
+        // create and return elem
+        const alertElem = document.createElement("div");
+        alertElem.classList.add(...classList);
+        alertElem.id = id;
+        alertElem.innerHTML = message;
+        return alertElem;
     }
 }

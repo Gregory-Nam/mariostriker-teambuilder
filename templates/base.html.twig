@@ -18,7 +18,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body data-target = "modal-handler.modal" {{ stimulus_controller('modal-handler', {'formUrl':path('app_inscription')}) }}>
+	<body data-target = "modal-handler.modal" {{ stimulus_controller('modal-handler', {'signupUrl':path('app_inscription'), 'loginUrl':path('app_connexion')}) }}>
         {{ include('modal/signup.html.twig') }}
 
 		{% block nav %}
@@ -31,9 +31,16 @@
 							TEAM BUILDER
 						</a>
 					</div>
-					<div class="d-flex"  >
-						<button  class="btn btn-outline-warning me-2"> Connexion </button>
-						<button  data-action="click->modal-handler#signUpForm" class="btn btn-outline-warning"  data-bs-toggle="modal" data-bs-target="#signUpModal"> Inscription </button>
+					<div class="d-flex" >
+						 {% if app.user.username is defined %}
+							<button class="btn btn-outline-warning me-2"> Mon compte </button>
+							<a href = "{{ path('app_logout') }}"> <button class="btn btn-outline-warning me-2"> Deconnexion </button></a>
+
+						 {% else %}
+						<button  data-action="click->modal-handler#loginForm"class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#genericModal"> Connexion </button>
+						<button  data-action="click->modal-handler#signUpForm" class="btn btn-outline-warning"  data-bs-toggle="modal" data-bs-target="#genericModal"> Inscription </button>
+						{% endif %}
+
 					</div>
 				</div>
 			</nav>

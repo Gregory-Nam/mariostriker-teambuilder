@@ -7,9 +7,11 @@
     pointer-events: none;
 }
 
-#signUpModal .modal-content > * {
+
+#genericModal .modal-content > * {
     background-color: #EFEFD3;
 }
+
 
 html,
 body {
@@ -27,12 +29,15 @@ body {
     background-attachment: fixed;
 }
 
-#signUpModal input[type], #signUpModal input[type]:hover, #signUpModal input[type]::placeholder, 
-#signUpModal input[type]:focus {
+
+
+
+#genericModal input[type], #genericModal input[type]:hover, #genericModal input[type]::placeholder, 
+#genericModal input[type]:focus {
     background: #1F0207;
     color: yellow;
 }
 
-#signUpModal input[type]::placeholder {
+#genericModal input[type]::placeholder {
     color:rgba(255, 255, 0, 0.356);
 }
