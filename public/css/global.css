@@ -29,8 +29,11 @@ body {
     background-attachment: fixed;
 }
 
-
-
+.mario-text{
+    color: #F4C203;
+    font-weight: bolder;
+    -webkit-text-stroke: 2px black;
+}
 
 #genericModal input[type], #genericModal input[type]:hover, #genericModal input[type]::placeholder, 
 #genericModal input[type]:focus {
@@ -41,3 +44,45 @@ body {
 #genericModal input[type]::placeholder {
     color:rgba(255, 255, 0, 0.356);
 }
+
+#team-container {
+    width:1200px;
+    height:600px;
+    background-color: #EFEFD3;
+    box-shadow: -15px 15px 5px rgba(0, 0, 0, 0.75);
+}
+
+#teams-content {
+    height:500px;
+    overflow: hidden;
+    overflow-y:visible;
+}
+
+#team-container-title {
+    background-color: #F37500;
+    height:100px;
+    width:600px;
+    margin-top:-30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.head-picture{
+    border-radius: 50%;
+    background-color: #404040;
+    border: solid 4px black;
+}
+.head-picture:hover{
+    border: solid 4px rgb(243 117 0);
+}
+
+.downvote {
+    color:red;
+    cursor: pointer;
+}
+
+.upvote {
+    color:green;
+    cursor: pointer;
+
+}
+
