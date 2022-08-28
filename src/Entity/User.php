@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -64,6 +66,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $mail;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Equipe::class, mappedBy="CREATEUR")
+     */
+    private $equipes;
+
+    public function __construct()
+    {
+        $this->equipes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -217,6 +229,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipe>
+     */
+    public function getEquipes(): Collection
+    {
+        return $this->equipes;
+    }
+
+    public function addEquipe(Equipe $equipe): self
+    {
+        if (!$this->equipes->contains($equipe)) {
+            $this->equipes[] = $equipe;
+            $equipe->setCREATEUR($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipe(Equipe $equipe): self
+    {
+        if ($this->equipes->removeElement($equipe)) {
+            // set the owning side to null (unless already changed)
+            if ($equipe->getCREATEUR() === $this) {
+                $equipe->setCREATEUR(null);
+            }
+        }
 
         return $this;
     }

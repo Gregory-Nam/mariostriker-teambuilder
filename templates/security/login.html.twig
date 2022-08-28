@@ -1,0 +1,12 @@
+<form data-action="submit->modal-handler#validationLogin" data-modal-handler-target="formLogin" method="post">
+	<label for="inputUsername" class="w-100 text-center">Pseudo</label>
+	<input type="text" placeholder = "Votre pseudo" value="{{ last_username }}" name="username" id="inputUsername" class="w-100 text-center form-control" autocomplete="username" required autofocus>
+	<label for="inputPassword" class="w-100 text-center">Mot de passe</label>
+	<input type="password" placeholder ="Votre mot de passe" name="password" id="inputPassword" class="w-100 text-center form-control" autocomplete="current-password" required>
+
+	<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+	<button class="d-block mx-auto btn-warning fw-bold mt-4" type="submit" >
+		Connexion
+	</button>
+</form>

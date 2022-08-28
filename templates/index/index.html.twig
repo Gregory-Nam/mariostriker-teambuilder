@@ -5,144 +5,47 @@
 		<div class="mx-auto mb-3" id="team-container-title">
 			<h2 class="mario-text text-center mt-4">Les équipes</h2>
 		</div>
-
+		
 		<div class="mt-3 w-100" id="teams-content">
-			<div class="row mb-3">
+
+			{% for nom,equipe in equipes %}
+				
+				<div class="row mb-3">
 				<div class="col-2 d-flex ">
 					<p class="mx-auto my-auto fw-bold">
-						Nom équipe
+						{{nom}}
 					</p>
 				</div>
 				<div class="col">
-					<img src="{{asset('images/characters/mario.png')}}" class=" head-picture img-thumbnail img-fluid">
+					<img src="{{asset('images/characters/'~ equipe.j1)}}" class=" head-picture img-thumbnail img-fluid">
 				</div>
 				<div class="col">
-					<img src="{{asset('images/characters/Peach.png')}}" class=" head-picture img-thumbnail img-fluid">
+					<img src="{{asset('images/characters/'~ equipe.j2)}}" class=" head-picture img-thumbnail img-fluid">
 				</div>
 				<div class="col">
-					<img src="{{asset('images/characters/Yoshi.png')}}" class=" head-picture img-thumbnail img-fluid">
+					<img src="{{asset('images/characters/'~ equipe.j3)}}" class=" head-picture img-thumbnail img-fluid">
 				</div>
 				<div class="col">
-					<img src="{{asset('images/characters/Bowser.png')}}" class=" head-picture img-thumbnail img-fluid">
+					<img src="{{asset('images/characters/'~ equipe.j4)}}" class=" head-picture img-thumbnail img-fluid">
 				</div>
 				<div class="col  d-flex flex-column">
 					<p class="my-auto mx-auto text-center fw-bold">
-						<i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i> 5
+						<i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i> {{equipe.upvote}}
 						<br>
-						<i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i> 4
+						<i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i> {{equipe.downvote}}
 					</p>
 				</div>
 				<div class="col d-flex flex-column">
 					<p class="my-auto mx-auto text-center fw-bold">
-						17/06/2022
+						{{equipe.date}}
 						<br>
-						pseudo
+						{{equipe.createur}}
 					</p>
 				</div>
 				<hr class="mt-3 w-75 mx-auto">
 			</div>
-			<div class="row mb-3">
-				<div class="col-2 d-flex ">
-					<p class="mx-auto my-auto fw-bold">
-						Nom équipe
-					</p>
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/mario.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Peach.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Yoshi.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Bowser.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col  d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						<i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i> 5
-						<br>
-						<i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i> 4
-					</p>
-				</div>
-				<div class="col d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						17/06/2022
-						<br>
-						pseudo
-					</p>
-				</div>
-				<hr class="mt-3 w-75 mx-auto">
-			</div>
-			<div class="row mb-3">
-				<div class="col-2 d-flex ">
-					<p class="mx-auto my-auto fw-bold">
-						Nom équipe
-					</p>
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/mario.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Peach.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Yoshi.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Bowser.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col  d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						<i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i> 5
-						<br>
-						<i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i> 4
-					</p>
-				</div>
-				<div class="col d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						17/06/2022
-						<br>
-						pseudo
-					</p>
-				</div>
-				<hr class="mt-3 w-75 mx-auto">
-			</div>
-			<div class="row mb-3">
-				<div class="col-2 d-flex ">
-					<p class="mx-auto my-auto fw-bold">
-						Nom équipe
-					</p>
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/mario.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Peach.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Yoshi.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col">
-					<img src="{{asset('images/characters/Bowser.png')}}" class=" head-picture img-thumbnail img-fluid">
-				</div>
-				<div class="col  d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						<i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i> 5
-						<br>
-						<i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i> 4
-					</p>
-				</div>
-				<div class="col d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						17/06/2022
-						<br>
-						pseudo
-					</p>
-				</div>
-				<hr class="mt-3 w-75 mx-auto">
-			</div>
+			{% endfor %}
+			
 		</div>
 
 	</div>
