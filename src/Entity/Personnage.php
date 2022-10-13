@@ -182,4 +182,11 @@ class Personnage
 
         return $this;
     }
+
+    public function getStatsBase() : array{
+        $diffStat = array("FORCE" => $this->getFORCEV(), 
+        "VITESSE" => $this->getVITESSEV(),
+        "PASSE" => 0, "TIR" => $this->getTIRV(), "TECHNIQUE" => $this->getTECHNIQUEV());
+        return $diffStat;
+    }
 }

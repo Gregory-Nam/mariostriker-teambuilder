@@ -1,7 +1,7 @@
-import { Controller } from '@hotwired/stimulus';
+import { CustomController } from "./custom-controller.js";
 
 
-export default class extends Controller {
+export default class extends CustomController {
     static targets = ["modal", "modalBody", "form", "formLogin"];
 
     static values = {
@@ -9,35 +9,20 @@ export default class extends Controller {
         'loginUrl': String,
     }
 
-    /**
-     * 
-     * @param {String} url 
-     * @returns Response text
-     */
-    async ajaxGet(url) {
-        const response = await fetch(url);
-        return response.text();
-    }
-
-    async ajaxPut(url,data){
-        const response = await fetch(url,{
-            method:"POST",
-            body:data
-        });
-        return response;
-    }
 
     /**
      * Click on signup
      */
     async signUpForm() {
-        this.ajaxGet(this.signupUrlValue).then(form=>{
+        super.ajaxGet(this.signupUrlValue).then(form=>{
             this.modalBodyTarget.innerHTML = form;
         });
     }
 
     async loginForm(){
-        this.ajaxGet(this.loginUrlValue).then(form=>{
+        console.log("hello");
+        console.log(this.modalBodyTarget);
+        super.ajaxGet(this.loginUrlValue).then(form=>{
             this.modalBodyTarget.innerHTML = form;
         });
     }
@@ -49,7 +34,8 @@ export default class extends Controller {
     validation(event){
         event.preventDefault();
         const data = new FormData(this.formTarget);
-        this.ajaxPut(this.signupUrl, data)
+        console.log(this.signupUrlValue);
+        super.ajaxPut(this.signupUrlValue, data)
             .then(res=> res.json())
             .then(data=>{
                 if(data.status == "error") {
@@ -64,7 +50,7 @@ export default class extends Controller {
     validationLogin(event){
         event.preventDefault();
         const data = new FormData(this.formLoginTarget);
-        this.ajaxPut(this.loginUrlValue, data)
+        super.ajaxPut(this.loginUrlValue, data)
             .then(res => {if(res.status == 401) return res.json(); else if(res.status == 200) window.location.reload()})
             .then(data=>{
                 this.modalBodyTarget.prepend(this.createAlertMessage(data.message, "signup-alert","alert","alert-danger"));
@@ -81,4 +67,8 @@ export default class extends Controller {
         alertElem.innerHTML = message;
         return alertElem;
     }
+
+    connect() {
+        console.log("Hello, Stimulus!", this.element)
+      }     
 }

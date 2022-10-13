@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div id="team-container" class="my-auto mx-auto d-flex flex-column">
-		<div class="mx-auto mb-3" id="team-container-title">
+	<div id="team-container" class="my-auto mx-auto mt-5 d-flex flex-column">
+		<div class="mx-auto " id="team-container-title">
 			<h2 class="mario-text text-center mt-4">Les équipes</h2>
 		</div>
-		
 		<div class="mt-3 w-100" id="teams-content">
 
-			{% for nom,equipe in equipes %}
-				
-				<div class="row mb-3">
+			{% for equipe in equipes %}
+				<a class="team" href="{{ path('app_visualisation_equipe', {teamid:equipe.id}) }}">
+				<div class="row mb-3 ">
+
 				<div class="col-2 d-flex ">
 					<p class="mx-auto my-auto fw-bold">
-						{{nom}}
+						{{equipe.nomequipe}}
 					</p>
 				</div>
 				<div class="col">
@@ -28,13 +28,7 @@
 				<div class="col">
 					<img src="{{asset('images/characters/'~ equipe.j4)}}" class=" head-picture img-thumbnail img-fluid">
 				</div>
-				<div class="col  d-flex flex-column">
-					<p class="my-auto mx-auto text-center fw-bold">
-						<i class="fa fa-arrow-circle-up upvote" aria-hidden="true"></i> {{equipe.upvote}}
-						<br>
-						<i class="fa fa-arrow-circle-down downvote" aria-hidden="true"></i> {{equipe.downvote}}
-					</p>
-				</div>
+
 				<div class="col d-flex flex-column">
 					<p class="my-auto mx-auto text-center fw-bold">
 						{{equipe.date}}
@@ -44,6 +38,7 @@
 				</div>
 				<hr class="mt-3 w-75 mx-auto">
 			</div>
+			</a>
 			{% endfor %}
 			
 		</div>

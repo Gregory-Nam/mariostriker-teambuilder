@@ -1,11 +1,11 @@
-<div class="modal" tabindex="-1" id="genericModal">
-	<div class="modal-dialog modal-dialog-centered">
+<div class="modal" tabindex="-1" id="genericModal" {{stimulus_target('modal-handler', 'modal') }} >
+	<div class="modal-dialog modal-dialog-centered" id="modal">
 		<div class="modal-content">
 			<div class="modal-header d-flex justify-content-center bg-warning">
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
 			</div>
-			<div class="modal-body" data-modal-handler-target="modalBody">
+			<div class="modal-body" {{stimulus_target('modal-handler', 'modalBody') }}>
 				{{modalContent|default("Chargement..")}}
 			</div>
 		</div>

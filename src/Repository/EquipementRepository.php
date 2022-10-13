@@ -39,20 +39,30 @@ class EquipementRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Equipement[] Returns an array of Equipement objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Equipement[] Returns an array of Equipement objects
+    */
+   public function findByCategorie($categorie): array
+   {
+       return $this->createQueryBuilder('e')
+           ->select("e.id, e.NOM")
+           ->where("e.CATEGORIE = :val")
+           ->setParameter("val", $categorie)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
+    public function findStatByID($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select("p.CATEGORIE as categorie, p.FORCE_DIFF as force, p.VITESSE_DIFF as vitesse, p.TECHNIQUE_DIFF as technique, p.PASSE_DIFF as passe, p.TIR_DIFF as tir")
+            ->andWhere('p.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Equipement
 //    {

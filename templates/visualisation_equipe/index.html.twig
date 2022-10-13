@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visualisation d'équipe{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+
+
+    <div class="d-flex mx-auto mt-2 justify-content-center">
+        <div class="d-flex flex-column mr-5">
+            <h5 class="text-center">{{joueurs.NOM_EQUIPE}}</h5>
+        </div>
+        <div class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h4 class="mx-auto mt-3"> Capitaine </h4>
+                <img src="/images/characters/{{joueurs.CAPITAINE.IMAGE}}" class="mb-3 mt-3 img-thumbnail img-fluid head-picture-builder head-picture" alt="">
+
+                <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                    <li class=""> Force : <span>{{joueurs.CAPITAINE.STATS_BASE.FORCE + joueurs.CAPITAINE.DIFF_STAT.FORCE}}</span> <span>({{joueurs.CAPITAINE.DIFF_STAT.FORCE}})</span></li>   
+                    <li class="">Vitesse : <span >{{joueurs.CAPITAINE.STATS_BASE.VITESSE + joueurs.CAPITAINE.DIFF_STAT.VITESSE}}</span> <span >({{joueurs.CAPITAINE.DIFF_STAT.VITESSE}})</span></li>      
+                    <li class="">Passe : <span >{{joueurs.CAPITAINE.STATS_BASE.PASSE + joueurs.CAPITAINE.DIFF_STAT.PASSE}}</span> <span >({{joueurs.CAPITAINE.DIFF_STAT.PASSE}})</span></li>   
+                    <li class="">Tir : <span >{{joueurs.CAPITAINE.STATS_BASE.TIR + joueurs.CAPITAINE.DIFF_STAT.TIR}}</span> <span >({{joueurs.CAPITAINE.DIFF_STAT.TIR}})</span></li>   
+                    <li class=""> Technique : <span >{{joueurs.CAPITAINE.STATS_BASE.TECHNIQUE + joueurs.CAPITAINE.DIFF_STAT.TECHNIQUE}}</span> <span >({{joueurs.CAPITAINE.DIFF_STAT.TECHNIQUE}})</span></li>   
+                </ul>
+
+                <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                    <li> {{joueurs.CAPITAINE.EQUIPEMENTS[0]}}</li>   
+                    <li> {{joueurs.CAPITAINE.EQUIPEMENTS[1]}}</li>   
+                    <li> {{joueurs.CAPITAINE.EQUIPEMENTS[2]}}</li>   
+                    <li> {{joueurs.CAPITAINE.EQUIPEMENTS[3]}}</li>   
+                </ul>
+                
+        </div>
+        <div   class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h3 class="mx-auto mt-3"> Millieu 1 </h3>
+            <img src="/images/characters/{{joueurs.MILLIEU1.IMAGE}}" class="mb-3 mt-3 img-thumbnail img-fluid head-picture-builder head-picture" alt="">
+
+            <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                <li class=""> Force : <span>{{joueurs.MILLIEU1.STATS_BASE.FORCE + joueurs.MILLIEU1.DIFF_STAT.FORCE}}</span> <span>({{joueurs.MILLIEU1.DIFF_STAT.FORCE}})</span></li>   
+                <li class="">Vitesse : <span >{{joueurs.MILLIEU1.STATS_BASE.VITESSE + joueurs.MILLIEU1.DIFF_STAT.VITESSE}}</span> <span >({{joueurs.MILLIEU1.DIFF_STAT.VITESSE}})</span></li>      
+                <li class="">Passe : <span >{{joueurs.MILLIEU1.STATS_BASE.PASSE + joueurs.MILLIEU1.DIFF_STAT.PASSE}}</span> <span >({{joueurs.MILLIEU1.DIFF_STAT.PASSE}})</span></li>   
+                <li class="">Tir : <span >{{joueurs.MILLIEU1.STATS_BASE.TIR + joueurs.MILLIEU1.DIFF_STAT.TIR}}</span> <span >({{joueurs.MILLIEU1.DIFF_STAT.TIR}})</span></li>   
+                <li class=""> Technique : <span >{{joueurs.MILLIEU1.STATS_BASE.TECHNIQUE + joueurs.MILLIEU1.DIFF_STAT.TECHNIQUE}}</span> <span >({{joueurs.MILLIEU1.DIFF_STAT.TECHNIQUE}})</span></li>   
+            </ul>
+
+            <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                <li> {{joueurs.MILLIEU1.EQUIPEMENTS[0]}}</li>   
+                <li> {{joueurs.MILLIEU1.EQUIPEMENTS[1]}}</li>   
+                <li> {{joueurs.MILLIEU1.EQUIPEMENTS[2]}}</li>   
+                <li> {{joueurs.MILLIEU1.EQUIPEMENTS[3]}}</li>   
+            </ul>
+
+        </div>
+        <div class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h3 class="mx-auto mt-3"> Millieu 2 </h3>
+            <img src="/images/characters/{{joueurs.MILLIEU2.IMAGE}}" class="mb-3 mt-3 img-thumbnail img-fluid head-picture-builder head-picture" alt="">
+
+            <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                <li class=""> Force : <span>{{joueurs.MILLIEU2.STATS_BASE.FORCE + joueurs.MILLIEU2.DIFF_STAT.FORCE}}</span> <span>({{joueurs.MILLIEU2.DIFF_STAT.FORCE}})</span></li>   
+                <li class="">Vitesse : <span >{{joueurs.MILLIEU2.STATS_BASE.VITESSE + joueurs.MILLIEU2.DIFF_STAT.VITESSE}}</span> <span >({{joueurs.MILLIEU2.DIFF_STAT.VITESSE}})</span></li>      
+                <li class="">Passe : <span >{{joueurs.MILLIEU2.STATS_BASE.PASSE + joueurs.MILLIEU2.DIFF_STAT.PASSE}}</span> <span >({{joueurs.MILLIEU2.DIFF_STAT.PASSE}})</span></li>   
+                <li class="">Tir : <span >{{joueurs.MILLIEU2.STATS_BASE.TIR + joueurs.MILLIEU2.DIFF_STAT.TIR}}</span> <span >({{joueurs.MILLIEU2.DIFF_STAT.TIR}})</span></li>   
+                <li class=""> Technique : <span >{{joueurs.MILLIEU2.STATS_BASE.TECHNIQUE + joueurs.MILLIEU2.DIFF_STAT.TECHNIQUE}}</span> <span >({{joueurs.MILLIEU2.DIFF_STAT.TECHNIQUE}})</span></li>   
+            </ul>
+
+            <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                <li> {{joueurs.MILLIEU2.EQUIPEMENTS[0]}}</li>   
+                <li> {{joueurs.MILLIEU2.EQUIPEMENTS[1]}}</li>   
+                <li> {{joueurs.MILLIEU2.EQUIPEMENTS[2]}}</li>   
+                <li> {{joueurs.MILLIEU2.EQUIPEMENTS[3]}}</li>   
+            </ul>
+
+        </div>
+        <div  class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h3 class="mx-auto mt-3"> Defenseur </h3>
+            <img src="/images/characters/{{joueurs.DEFENSEUR.IMAGE}}" class="mb-3 mt-3 img-thumbnail img-fluid head-picture-builder head-picture" alt="">
+
+            <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                <li class=""> Force : <span>{{joueurs.DEFENSEUR.STATS_BASE.FORCE + joueurs.DEFENSEUR.DIFF_STAT.FORCE}}</span> <span>({{joueurs.DEFENSEUR.DIFF_STAT.FORCE}})</span></li>   
+                <li class="">Vitesse : <span >{{joueurs.DEFENSEUR.STATS_BASE.VITESSE + joueurs.DEFENSEUR.DIFF_STAT.VITESSE}}</span> <span >({{joueurs.DEFENSEUR.DIFF_STAT.VITESSE}})</span></li>      
+                <li class="">Passe : <span >{{joueurs.DEFENSEUR.STATS_BASE.PASSE + joueurs.DEFENSEUR.DIFF_STAT.PASSE}}</span> <span >({{joueurs.DEFENSEUR.DIFF_STAT.PASSE}})</span></li>   
+                <li class="">Tir : <span >{{joueurs.DEFENSEUR.STATS_BASE.TIR + joueurs.DEFENSEUR.DIFF_STAT.TIR}}</span> <span >({{joueurs.DEFENSEUR.DIFF_STAT.TIR}})</span></li>   
+                <li class=""> Technique : <span >{{joueurs.DEFENSEUR.STATS_BASE.TECHNIQUE + joueurs.DEFENSEUR.DIFF_STAT.TECHNIQUE}}</span> <span >({{joueurs.DEFENSEUR.DIFF_STAT.TECHNIQUE}})</span></li>   
+            </ul>
+
+            <ul class="list-group list-group-flush  text-center mt-3 mb-3 stats">
+                <li> {{joueurs.DEFENSEUR.EQUIPEMENTS[0]}}</li>   
+                <li> {{joueurs.DEFENSEUR.EQUIPEMENTS[1]}}</li>   
+                <li> {{joueurs.DEFENSEUR.EQUIPEMENTS[2]}}</li>   
+                <li> {{joueurs.DEFENSEUR.EQUIPEMENTS[3]}}</li>   
+            </ul>
+
+        </div>
+
+
+    </div>
+{% endblock %}

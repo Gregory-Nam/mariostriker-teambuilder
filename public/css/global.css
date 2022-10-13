@@ -13,21 +13,6 @@
 }
 
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-}
-
-.content{
-    width:100%;
-    height:100%;
-    background:linear-gradient(244.61deg, #BE2A06 0.33%, #C64A0D 10.75%, #CA580E 22.7%, #CF6910 27.13%, #D67E12 37.5%, #D89219 49.13%, #D67E12 74.51%, #C64A0D 84.91%, #BE2A06 100.09%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
 .mario-text{
     color: #F4C203;
@@ -45,13 +30,96 @@ body {
     color:rgba(255, 255, 0, 0.356);
 }
 
-#team-container {
-    width:1200px;
-    height:600px;
-    background-color: #EFEFD3;
-    box-shadow: -15px 15px 5px rgba(0, 0, 0, 0.75);
+
+
+
+@media only screen and (min-width: 500px){
+    #team-container {
+        width:1000px;
+        height:500px;
+        background-color: #EFEFD3;
+        box-shadow: -15px 15px 5px rgba(0, 0, 0, 0.75);
+    }
 }
 
+@media only screen and (min-width: 1600px){
+    #team-container {
+        width:1200px;
+        height:600px;
+        background-color: #EFEFD3;
+        box-shadow: -15px 15px 5px rgba(0, 0, 0, 0.75);
+    }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+@media only screen and (min-height:900px){
+    .content{
+        height:100%;
+    }
+}
+
+@media only screen and (max-height:900px){
+    .content{
+        width:100%;
+        height:700px;
+        background:linear-gradient(244.61deg, #BE2A06 0.33%, #C64A0D 10.75%, #CA580E 22.7%, #CF6910 27.13%, #D67E12 37.5%, #D89219 49.13%, #D67E12 74.51%, #C64A0D 84.91%, #BE2A06 100.09%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        overflow: auto;
+    }
+
+    html,body{
+        overflow: unset;
+    }
+}
+
+.content{
+    width:100%;
+    height:100%;
+    background:linear-gradient(244.61deg, #BE2A06 0.33%, #C64A0D 10.75%, #CA580E 22.7%, #CF6910 27.13%, #D67E12 37.5%, #D89219 49.13%, #D67E12 74.51%, #C64A0D 84.91%, #BE2A06 100.09%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+
+
+
+
+.backgroundSelectedChar{
+    background-color: #EFEFD3;
+    border-radius:25px;
+    border:solid 5px black;
+    height:fit-content;
+    padding-bottom: 2%;
+}
+
+.link-bar {
+    text-decoration: none;
+}
+
+.team:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.team {
+    color:inherit;
+    text-decoration:none;
+}
+.stats li{
+    background-color: burlywood !important;
+    padding-top:1%;
+    padding-bottom: 1%;
+    display:block;
+}
 #teams-content {
     height:500px;
     overflow: hidden;
@@ -70,6 +138,11 @@ body {
     border-radius: 50%;
     background-color: #404040;
     border: solid 4px black;
+}
+
+.head-picture-builder {
+    height:180px;
+    width:180px;
 }
 .head-picture:hover{
     border: solid 4px rgb(243 117 0);

@@ -32,10 +32,10 @@ class IndexController extends AbstractController
         $data = array();
 
         foreach($equipes as $equipe){
-            $data[$equipe->getNOMEQUIPE()] = array();
+            $current = array();
 
-            $current = &$data[$equipe->getNOMEQUIPE()];
-
+            $current['id'] =$equipe->getId();
+            $current["nomequipe"] = $equipe->getNOMEQUIPE();
             $current["createur"] = $equipe->getCREATEUR()->getUSERNAME();
             $current["date"] = $equipe->getDATE()->format('d-m-y');
             $current["downvote"] = $equipe->getDOWNVOTE();
@@ -44,6 +44,8 @@ class IndexController extends AbstractController
             $current["j2"] = $equipe->getMILLIEU1()->getPERSONNAGE()->getIMAGE();
             $current["j3"] = $equipe->getMILLIEU2()->getPERSONNAGE()->getIMAGE();
             $current["j4"] = $equipe->getDEFENSEUR()->getPERSONNAGE()->getIMAGE();
+
+            array_push($data, $current);
         }
 
         return $data;

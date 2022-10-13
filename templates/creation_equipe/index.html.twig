@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'équipe{% endblock %}
+
+{% block body %}
+    <div class="d-flex mx-auto mt-2 justify-content-center">
+        <div class="d-flex flex-column mr-5">
+            <h5 class="text-center">Nom de l'équipe </h5>
+            <input class="form-control" type="text" id="teamName">
+        </div>
+        <div  {{ stimulus_controller('builder-handler', {'url': app.request.getSchemeAndHttpHost()}) }} class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h4 class="mx-auto mt-3"> Capitaine </h4>
+            {% block CharacterSelector %}
+                <img src="/images/characters/Personne.png" class="mb-3 mt-3 img-thumbnail img-fluid head-picture-builder head-picture" alt="" {{stimulus_target('builder-handler', 'imageChar')}}>
+
+                <select class="form-select form-select-sm text-center selectChar" {{ stimulus_action('builder-handler', 'changeData','change')}} {{stimulus_target('builder-handler', 'selectorChangeCharacter')}}> 
+                    
+                        <option value="" selected disabled hidden>Choisir</option>
+                    {% for p in personnages %}
+                        <option value={{p.ID}}>{{p.NOM}}</option>
+                    {% endfor %}
+                <select>
+
+                <ul class="list-group list-group-flush d-none text-center mt-3 mb-3 stats" {{stimulus_target("builder-handler", "stats")}}>
+                    <li class=""> Force : <span {{stimulus_target('builder-handler', 'force')}}>0</span> <span {{stimulus_target('builder-handler', 'force_diff')}}>(+0)</span></li>   
+                    <li class="">Vitesse : <span {{stimulus_target('builder-handler', 'vitesse')}}>0</span> <span {{stimulus_target('builder-handler', 'vitesse_diff')}}>(+0)</span></li>      
+                    <li class="">Passe : <span {{stimulus_target('builder-handler', 'passe')}}>0</span> <span {{stimulus_target('builder-handler', 'passe_diff')}}>(+0)</span></li>      
+                    <li class="">Tir : <span {{stimulus_target('builder-handler', 'tir')}}>0</span> <span {{stimulus_target('builder-handler', 'tir_diff')}}>(+0)</span></li>      
+                    <li class=""> Technique : <span {{stimulus_target('builder-handler', 'technique')}}>0</span> <span {{stimulus_target('builder-handler', 'technique_diff')}}>(+0)</span></li>   
+                </ul>
+
+                <div class="d-none" {{stimulus_target("builder-handler", "equipements")}}>
+                {% for categorie,equipementsCate in equipements %}
+                    <h6 class="text-center">{{categorie}}</h5>
+                    <select class="form-select form-select-sm text-center equipSelect" {{ stimulus_action('builder-handler', 'changeStat','change')}} {{stimulus_target("builder-handler", "selectorChangeEquipement" ~ categorie)}}>
+                        <option value="" selected disabled hidden>Choisir</option>
+                        {% for equipement in equipementsCate %}
+                            <option value = {{equipement['id']}}> {{equipement['NOM'] }}</option>
+                        {% endfor %}
+                    </select>
+                {% endfor %}
+                </div>
+                
+
+            {% endblock %}
+        </div>
+        <div  {{ stimulus_controller('builder-handler', {'url': app.request.getSchemeAndHttpHost()}) }}  class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h3 class="mx-auto mt-3"> Millieu 1 </h3>
+            {{block("CharacterSelector")}}
+
+        </div>
+        <div  {{ stimulus_controller('builder-handler', {'url': app.request.getSchemeAndHttpHost()}) }}  class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h3 class="mx-auto mt-3"> Millieu 2 </h3>
+            {{block("CharacterSelector")}}
+
+        </div>
+        <div  {{ stimulus_controller('builder-handler', {'url': app.request.getSchemeAndHttpHost()}) }} class="backgroundSelectedChar d-flex flex-column px-2 mx-2">
+            <h3 class="mx-auto mt-3"> Defenseur </h3>
+                {{block("CharacterSelector")}}
+
+        </div>
+
+        <div class="d-flex flex-column mt-3" {{ stimulus_controller('builder-handler', {'url': app.request.getSchemeAndHttpHost()}) }}>
+            <button class = "btn btn-warning" {{stimulus_action("builder-handler", "teamValidator","click")}}>   Valider </button>
+        </div>
+
+
+    </div>
+{% endblock %}

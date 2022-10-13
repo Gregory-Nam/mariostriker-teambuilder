@@ -54,13 +54,14 @@ class PersonnageRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Personnage
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findStatByID($value): array
+   {
+       return $this->createQueryBuilder('p')
+           ->select("p.IMAGE as image, p.FORCE_V as force, p.VITESSE_V as vitesse, p.TECHNIQUE_V as technique, p.PASSE_V as passe, p.TIR_V as tir")
+           ->andWhere('p.id = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }

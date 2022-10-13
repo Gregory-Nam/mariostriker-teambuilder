@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EquipeRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -60,18 +61,21 @@ class Equipe
     /**
      * @ORM\Column(type="integer", options={"default":"0"})
      */
-    private $UPVOTE;
+    private $UPVOTE = 0;
 
     /**
      * @ORM\Column(type="integer", options={"default":"0"})
      */
-    private $DOWNVOTE;
+    private $DOWNVOTE = 0;
 
     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $DATE;
 
+    public function __construct(){
+        $this->DATE = new DateTime();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -196,4 +200,8 @@ class Equipe
 
         return $this;
     }
+
+
+    
+
 }
